@@ -60,7 +60,10 @@
         <v-col
           v-for="card in cards"
           :key="card.title"
-          :cols="card.flex"
+          lg="3"
+          xs="12"
+          sm="12"
+          md="6"
         >
         <v-hover v-slot="{ hover }">
           <v-card :to="'/about'" :elevation="hover ? 16 : 0" :class="{ 'on-hover': hover }">
@@ -115,10 +118,10 @@ export default {
   },
   data: () => ({
       cards: [
-        { title: 'Bheema', src: 'painting.jpeg', flex: 3 },
-        { title: 'Davinci', src: 'https://5.imimg.com/data5/KT/UK/DU/SELLER-43474334/watercolour-paintings-500x500.png', flex: 3 },
-        { title: 'Elon Musk', src: 'painting2.jpg', flex: 3 },
-        { title: 'Nobita', src: 'https://render.fineartamerica.com/images/images-profile-flow/400/images-medium-large-5/space-for-reflection-chuck-pinson.jpg', flex: 3 },
+        { title: 'Bheema', src: 'painting.jpeg' },
+        { title: 'Davinci', src: 'https://5.imimg.com/data5/KT/UK/DU/SELLER-43474334/watercolour-paintings-500x500.png' },
+        { title: 'Elon Musk', src: 'painting2.jpg' },
+        { title: 'Nobita', src: 'https://render.fineartamerica.com/images/images-profile-flow/400/images-medium-large-5/space-for-reflection-chuck-pinson.jpg' },
       ],
     }),
 }
