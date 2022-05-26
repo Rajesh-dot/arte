@@ -4,15 +4,15 @@
       class="white"
     >
 
-      <v-toolbar-title text class="text-h4"><strong>Arte.</strong></v-toolbar-title>
+      <v-toolbar-title to="/" text class="text-h4"><strong>Arte.</strong></v-toolbar-title>
       <v-spacer default></v-spacer>
-      <v-btn rounded plain to="/" >
+      <v-btn rounded plain to="/artworks" >
         <v-icon dark>
           mdi-pencil
         </v-icon>
         <strong>ArtWorks</strong>
       </v-btn>
-      <v-btn rounded plain to="/about">
+      <v-btn rounded plain to="/shops">
         <v-icon dark>
           mdi-store
         </v-icon>
