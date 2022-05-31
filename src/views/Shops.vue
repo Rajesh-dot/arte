@@ -23,50 +23,50 @@
                 <v-card>
                     <v-card-text>
                         <v-switch
-                            v-model="switch1"
+                            v-model="filters.latest"
                             label="Latest"
                             color="orange"
                         ></v-switch>
                         <v-switch
-                            v-model="switch1"
+                            v-model="filters.popular"
                             label="Popular"
                             color="orange"
                         ></v-switch>
                         <v-checkbox
-                            v-model="ex4"
+                            v-model="filters.paintings"
                             label="Paintings"
                             color="orange"
                             value="paintings"
                             hide-details
                         ></v-checkbox>
                         <v-checkbox
-                            v-model="ex4"
+                            v-model="filters.decorations"
                             label="Decoration Materials"
                             color="orange"
                             value="paintings"
                             hide-details
                         ></v-checkbox>
                         <v-checkbox
-                            v-model="ex4"
+                            v-model="filters.sculptures"
                             label="Sculptures"
                             color="orange"
                             value="paintings"
                             hide-details
                         ></v-checkbox>
                         <v-checkbox
-                            v-model="ex4"
+                            v-model="filters.others"
                             label="Others"
                             color="orange"
                             value="paintings"
                         ></v-checkbox>
-                        <v-btn  color="secondary">
+                        <v-btn @click="clear" color="secondary">
                             Reset
                         </v-btn>
                     </v-card-text>
                 </v-card>
             </v-col>
             <v-col lg="9" xs="12" sm="12" md="9">
-                <v-card v-for="shop in shops" :key="shop.name" class="mx-auto mb-6">
+                <v-card v-for="shop in shops" :key="shop.id" class="mx-auto mb-6">
                     <v-img
                         class="white--text align-end"
                         height="200px"
@@ -96,15 +96,16 @@ export default {
     name: 'Shops',
     data: () => ({
         shops: [
-            {logo: 'logo.jpg', name: 'Magical-Vintage', description: 'Reproductions of Vintage Artworks with an emphasis on Art Nouveau and Art Deco'},
-            {logo: 'logo.jpg', name: 'Magical-Vintage', description: 'Reproductions of Vintage Artworks with an emphasis on Art Nouveau and Art Deco'},
-            {logo: 'logo.jpg', name: 'Magical-Vintage', description: 'Reproductions of Vintage Artworks with an emphasis on Art Nouveau and Art Deco'}
+            {id:1, logo: 'logo.jpg', name: 'Magical-Vintage', description: 'Reproductions of Vintage Artworks with an emphasis on Art Nouveau and Art Deco'},
+            {id:2, logo: 'logo.jpg', name: 'Magical-Vintage', description: 'Reproductions of Vintage Artworks with an emphasis on Art Nouveau and Art Deco'},
+            {id:3, logo: 'logo.jpg', name: 'Magical-Vintage', description: 'Reproductions of Vintage Artworks with an emphasis on Art Nouveau and Art Deco'}
         ],
         isLoading: false,
         items: [],
         model: null,
         search: null,
         tab: null,
+        filters:  {latest: false, popular: false, paintings: false, decorations: false, sculptures: false, others: false}
     }),
     watch: {
       model (val) {
@@ -129,6 +130,14 @@ export default {
           .finally(() => (this.isLoading = false))
       },
     },
+    methods: {
+        clear(e){
+            e.preventDefault()
+            for (const key of Object.keys(this.filters)) {
+                this.filters[key]=false
+            }
+        }
+    }
 }
 
 </script>

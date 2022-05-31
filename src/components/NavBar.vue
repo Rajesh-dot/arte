@@ -4,7 +4,7 @@
       class="white"
     >
 
-      <v-toolbar-title to="/" text class="text-h4"><strong>Arte.</strong></v-toolbar-title>
+      <v-toolbar-title text class="text-h4"><a class="black--text" style="text-decoration: none;" href="#/"><strong>Arte.</strong></a></v-toolbar-title>
       <v-spacer default></v-spacer>
       <v-btn rounded plain to="/artworks" >
         <v-icon dark>

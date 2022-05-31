@@ -96,10 +96,12 @@ export default {
         model: null,
         search: null,
         tab: null,
-        filters: [
-            {title: "Color", values: ["red", "blue", "green", "black", "white", "yellow"]},
-            {title: "Tag", values: []}
-        ]
+        filters: {
+            latest: false,
+            popular: false,
+            Color: ["red", "blue", "green", "black", "white", "yellow"],
+            Tag: []
+        }
     }),
     watch: {
       model (val) {
