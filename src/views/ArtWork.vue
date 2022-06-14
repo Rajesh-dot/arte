@@ -23,29 +23,29 @@
                 <v-card>
                     <v-card-text>
                         <v-switch
-                            v-model="switch1"
+                            v-model="filters.latest"
                             label="Latest"
                             color="orange"
                         ></v-switch>
                         <v-switch
-                            v-model="switch1"
+                            v-model="filters.popular"
                             label="Popular"
                             color="orange"
                         ></v-switch>
                         <v-expansion-panels focusable>
-                            <v-expansion-panel v-for="(item,i) in 5" :key="i">
-                            <v-expansion-panel-header>Hello</v-expansion-panel-header>
+                            <v-expansion-panel v-for="(filter,i) in filters.multi" :key="i">
+                            <v-expansion-panel-header>{{i}}</v-expansion-panel-header>
                             <v-expansion-panel-content>
-                                <v-checkbox
-                                    v-model="ex4"
-                                    label="Others"
+                                <v-checkbox v-for="(sub_filter,i) in filter" :key="i"
+                                    v-model="e4"
+                                    :label="i"
                                     color="black"
                                     value="paintings"
                                 ></v-checkbox>
                             </v-expansion-panel-content>
                             </v-expansion-panel>
                         </v-expansion-panels>
-                        <v-btn class="mt-5" color="secondary">
+                        <v-btn @click="clear" class="mt-5" color="secondary">
                             Reset
                         </v-btn>
                     </v-card-text>
@@ -99,8 +99,18 @@ export default {
         filters: {
             latest: false,
             popular: false,
-            Color: ["red", "blue", "green", "black", "white", "yellow"],
-            Tag: []
+            multi: {
+                Style: {Minimalistic: false, Impressionism: false, Classicism: false},
+                Color: {red: false, blue:false, green:false, black:false, white:false, yellow: false, orange: false, purple: false},
+                Tag: {Abstract: false, Animals: false, Architecture: false,
+                        Black_and_White: false, Character_Design: false, Flowers: false,
+                        Food: false, Futuristic: false, Geometric: false,
+                        Landscapes: false, Nature: false, Portraits: false,
+                        Scientific: false, Sketches: false, Still_Lifes: false,
+                        Sunsets: false, Surreal: false, Tribal_Art: false,
+                    },
+                Orientation: {square: false, potrait: false, landscape: false}
+            }
         }
     }),
     watch: {
@@ -126,6 +136,18 @@ export default {
           .finally(() => (this.isLoading = false))
       },
     },
+    methods: {
+        clear(e){
+            e.preventDefault()
+            this.filters.latest = false
+            this.filters.popular = false
+            for(let item in this.filters.multi){
+                for(let property in this.filters.multi[item]){
+                    this.filters.multi[item][property] = false
+                }
+            }
+        }
+    }
 }
 </script>
 
